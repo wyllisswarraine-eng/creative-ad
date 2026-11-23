@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRÉATIVE AD — Publicités Vidéo IA pour Marques E-commerce</title>
+    <meta name="description" content="CRÉATIVE AD crée des publicités vidéo IA haute conversion au format 9:16 pour marques e-commerce. Rendu cinématographique, zéro tournage studio, livraison en 48h.">
+
+    <!-- Google Fonts : Plus Jakarta Sans, Space Grotesk & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuration Tailwind : Palette bleu nuit sombre, violet néon, bleu électrique et or néon -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        midnight: {
+                            950: '#050816',
+                            900: '#0b1026',
+                            800: '#121938',
+                            700: '#1c254e',
+                        },
+                        neon: {
+                            500: '#8b5cf6',
+                            400: '#a855f7',
+                            300: '#c084fc',
+                        },
+                        electric: {
+                            400: '#00d4ff',
+                            300: '#38bdf8',
+                            500: '#0284c7',
+                        },
+                        gold: {
+                            400: '#facc15',
+                            300: '#fde047',
+                        }
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 28px rgba(0, 212, 255, 0.35)',
+                        'neon-violet': '0 0 36px rgba(139, 92, 246, 0.42)',
+                        'neon-gold': '0 0 24px rgba(250, 204, 21, 0.32)',
+                        'glass-deep': '0 22px 56px rgba(0, 0, 0, 0.65)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Styles personnalisés : Glassmorphism, Bordures Néon Animées, Typewriter, 3D Tilt & Spotlight -->
+    <style>
+        :root {
+            --bg-deep: #050816;
+            --bg-panel: #0b1026;
+            --violet: #8b5cf6;
+            --violet-bright: #a855f7;
+            --cyan: #00d4ff;
+            --sky: #38bdf8;
+            --gold: #facc15;
+        }
+
+        html, body {
+            background-color: var(--bg-deep);
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* 1. Barre de progression de lecture néon en haut de l'écran */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            z-index: 120;
+            background: linear-gradient(90deg, #00d4ff, #8b5cf6, #a855f7, #facc15, #00d4ff);
+            background-size: 220% 100%;
+            animation: gradientSlide 3.5s linear infinite;
+            box-shadow: 0 0 14px rgba(0, 212, 255, 0.85);
+            transition: width 0.08s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes gradientSlide {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 220% 50%; }
+        }
+
+        /* 2. Canvas réseau de particules neurales */
+        #neural-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* 3. Halo lumineux suivant le curseur (desktop) */
+        #cursor-spotlight {
+            position: fixed;
+            width: 560px;
+            height: 560px;
+            border-radius: 9999px;
+            pointer-events: none;
+            z-index: 1;
+            background: radial-gradient(
+                circle,
+                rgba(0, 212, 255, 0.14) 0%,
+                rgba(139, 92, 246, 0.09) 38%,
+                rgba(250, 204, 21, 0.03) 58%,
+                transparent 72%
+            );
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            mix-blend-mode: screen;
+        }
+
+        /* Grille futuriste subtile */
+        .bg-cyber-grid {
+            background-size: 50px 50px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Cartes Glassmorphism avec reflet au survol */
+        .glass-card {
+            position: relative;
+            background: rgba(11, 16, 38, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(
+                440px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(0, 212, 255, 0.16),
+                rgba(168, 85, 247, 0.09) 44%,
+                transparent 74%
+            );
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 212, 255, 0.45);
+            box-shadow: 0 22px 54px rgba(0, 0, 0, 0.62), 0 0 28px rgba(0, 212, 255, 0.18);
+        }
+
+        .glass-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Bordure néon animée rotative */
+        @property --border-angle {
+            syntax: "<angle>";
+            inherits: false;
+            initial-value: 0deg;
+        }
+
+        .neon-animated-border {
+            position: relative;
+            background:
+                linear-gradient(180deg, rgba(18, 25, 56, 0.94), rgba(5, 8, 22, 0.98)) padding-box,
+                conic-gradient(from var(--border-angle), #00d4ff, #8b5cf6, #a855f7, #facc15, #00d4ff) border-box;
+            border: 2px solid transparent;
+            animation: rotateNeonBorder 5.5s linear infinite;
+            transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes rotateNeonBorder {
+            to { --border-angle: 360deg; }
+        }
+
+        /* Maquette smartphone 9:16 avec bordure néon dynamique */
+        .phone-frame {
+            position: relative;
+            background:
+                linear-gradient(160deg, rgba(22, 31, 70, 0.96) 0%, rgba(11, 16, 38, 0.98) 55%, rgba(5, 8, 22, 1) 100%) padding-box,
+                conic-gradient(from var(--border-angle), rgba(0, 212, 255, 0.8), rgba(139, 92, 246, 0.75), rgba(250, 204, 21, 0.45), rgba(0, 212, 255, 0.8)) border-box;
+            border: 2px solid transparent;
+            animation: rotateNeonBorder 8s linear infinite;
+            box-shadow:
+                0 24px 60px rgba(0, 0, 0, 0.75),
+                0 0 32px rgba(0, 212, 255, 0.16),
+                inset 0 1px 0 rgba(255, 255, 255, 0.24);
+            transition: box-shadow 0.35s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+            transform-style: preserve-3d;
+        }
+
+        .phone-frame:hover {
+            box-shadow:
+                0 30px 68px rgba(0, 0, 0, 0.8),
+                0 0 44px rgba(139, 92, 246, 0.38),
+                0 0 26px rgba(0, 212, 255, 0.26),
+                inset 0 1px 0 rgba(255, 255, 255, 0.32);
+        }
+
+        /* Boutons CTA Néon avec reflet lumineux */
+        .btn-neon {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 52%, #a855f7 100%);
+            background-size: 200% 200%;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-neon::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -130%;
+            width: 75%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+            transform: skewX(-24deg);
+            transition: left 0.65s ease;
+            pointer-events: none;
+        }
+
+        .btn-neon:hover {
+            background-position: 100% 50%;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 14px 42px rgba(0, 212, 255, 0.45), 0 0 28px rgba(168, 85, 247, 0.5);
+        }
+
+        .btn-neon:hover::after {
+            left: 150%;
+        }
+
+        .btn-neon:active {
+            transform: scale(0.97);
+        }
+
+        /* Curseur néon clignotant pour l'effet Typewriter */
+        .type-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 0.9em;
+            margin-left: 5px;
+            vertical-align: -0.08em;
+            background: linear-gradient(180deg, #00d4ff, #facc15);
+            box-shadow: 0 0 12px #00d4ff;
+            border-radius: 2px;
+            animation: blinkCursor 0.78s steps(2, start) infinite;
+        }
+
+        .type-cursor.cursor-done {
+            animation: blinkCursor 0.9s steps(2, start) 3 forwards, fadeOutCursor 0.45s ease 2.8s forwards;
+        }
+
+        @keyframes blinkCursor {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        @keyframes fadeOutCursor {
+            to { opacity: 0; width: 0; margin-left: 0; }
+        }
+
+        /* Révélations fluides au scroll */
+        .reveal-kinetic {
+            opacity: 0;
+            transform: translateY(28px) scale(0.985);
+            filter: blur(5px);
+            transition: opacity 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+                        filter 0.68s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-kinetic.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+
+        /* Marquee infini */
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeScroll 28s linear infinite;
+        }
+
+        .marquee-container:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Boutons radio Durée stylisés */
+        .duration-radio input:checked + span {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.25), rgba(139, 92, 246, 0.45));
+            border-color: #00d4ff;
+            color: #ffffff;
+            box-shadow: 0 0 22px rgba(0, 212, 255, 0.32), inset 0 0 0 1px rgba(250, 204, 21, 0.4);
+        }
+
+        /* Toast de confirmation */
+        #toast-notification {
+            transform: translate(-50%, 135%);
+            opacity: 0;
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+        }
+
+        #toast-notification.show {
+            transform: translate(-50%, 0);
+            opacity: 1;
+        }
+
+        /* Animation pulse néon pour le bouton flottant WhatsApp */
+        @keyframes waPulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55), 0 0 24px rgba(0, 212, 255, 0.45);
+            }
+            50% {
+                box-shadow: 0 0 0 14px rgba(16, 185, 129, 0), 0 0 36px rgba(0, 212, 255, 0.78);
+            }
+        }
+
+        .wa-float-pulse {
+            animation: waPulseGlow 2.4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-neon-500 selection:text-white relative">
+
+    <!-- Barre de progression de lecture néon tout en haut -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Arrière-plan interactif Canvas : Réseau de particules neurales -->
+    <canvas id="neural-canvas" aria-hidden="true"></canvas>
+
+    <!-- Halo lumineux subtil suivant le curseur (desktop) -->
+    <div id="cursor-spotlight" aria-hidden="true"></div>
+
+    <!-- Lueurs d'ambiance fixes en arrière-plan -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
+        <div class="absolute -top-44 -left-32 w-[30rem] h-[30rem] bg-neon-500/20 rounded-full blur-[150px]"></div>
+        <div class="absolute top-1/3 -right-36 w-[34rem] h-[34rem] bg-electric-400/15 rounded-full blur-[155px]"></div>
+        <div class="absolute bottom-0 left-1/4 w-[28rem] h-[28rem] bg-gold-400/[0.06] rounded-full blur-[145px]"></div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 1. NAVBAR STICKY ÉLÉGANTE                                 -->
+    <!-- ========================================================= -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-midnight-950/80 backdrop-blur-2xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo CRÉATIVE AD -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="relative flex items-center justify-center w-11 h-11 rounded-2xl bg-gradient-to-br from-electric-400 via-neon-500 to-neon-400 shadow-neon-cyan group-hover:scale-105 transition-transform duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 8V6a2 2 0 012-2h12a2 2 0 012 2v2M4 8v10a2 2 0 002 2h12a2 2 0 002-2V8M9 4l-2 4m7-4l-2 4m6-4l-2 4" />
+                            <path fill="currentColor" stroke="none" d="M10.5 11.4v5.2l4.4-2.6-4.4-2.6z" />
+                        </svg>
+                        <span class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-gold-400 shadow-neon-gold"></span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-bold text-xl tracking-tight text-white leading-none">
+                            CRÉATIVE <span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-400 via-electric-300 to-neon-400">AD</span>
+                        </span>
+                        <span class="text-[10px] font-mono font-bold tracking-[0.2em] text-gold-400 uppercase mt-1">
+                            PUBLICITÉS VIDÉO IA
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Liens de navigation Desktop -->
+                <nav class="hidden md:flex items-center gap-8" aria-label="Navigation principale">
+                    <a href="#portfolio" class="text-sm font-medium text-slate-300 hover:text-electric-400 transition-colors">Portfolio</a>
+                    <a href="#methode" class="text-sm font-medium text-slate-300 hover:text-electric-400 transition-colors">Méthode</a>
+                    <a href="#offres" class="text-sm font-medium text-slate-300 hover:text-electric-400 transition-colors">Offres</a>
+                    <a href="#commander" class="text-sm font-medium text-slate-300 hover:text-electric-400 transition-colors">Commander</a>
+                </nav>
+
+                <!-- CTA Navbar + Menu Mobile -->
+                <div class="flex items-center gap-3">
+                    <a href="#commander" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm text-white btn-neon">
+                        <span>Commander &rarr;</span>
+                    </a>
+
+                    <button id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
+                            class="md:hidden p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 transition-colors">
+                        <svg id="icon-hamburger" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drawer Mobile -->
+        <div id="mobile-drawer" class="md:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-out bg-midnight-900/95 backdrop-blur-2xl border-b border-white/10">
+            <div class="px-4 pt-3 pb-6 space-y-2">
+                <a href="#portfolio" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-electric-400">Portfolio</a>
+                <a href="#methode" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-electric-400">Méthode</a>
+                <a href="#offres" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-electric-400">Offres</a>
+                <a href="#commander" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-electric-400">Commander</a>
+                <a href="#commander" class="mobile-link block mt-3 text-center px-5 py-3.5 rounded-xl font-bold text-white btn-neon">
+                    Commander &rarr;
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- ========================================================= -->
+        <!-- 2. HERO SECTION PERCUTANTE + STATISTIQUES ANIMÉES         -->
+        <!-- ========================================================= -->
+        <section class="relative pt-32 pb-16 lg:pt-40 lg:pb-24 bg-cyber-grid">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto text-center">
+                    <!-- Badge Néon Doré -->
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-midnight-900/90 border border-gold-400/40 backdrop-blur-md mb-8 shadow-neon-gold">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-85"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-gold-400"></span>
+                        </span>
+                        <span class="text-xs sm:text-sm font-mono font-bold tracking-wide text-gold-400">
+                            PUBLICITÉS VIDÉO IA &bull; FORMAT 9:16 HAUTE CONVERSION
+                        </span>
+                    </div>
+
+                    <!-- Titre principal Typewriter -->
+                    <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-white min-h-[3.3em] sm:min-h-[2.3em]"
+                        aria-label="Des publicités vidéo IA haute conversion sans tournage studio">
+                        <span class="typewriter-target bg-clip-text text-transparent bg-gradient-to-r from-white via-electric-300 to-neon-400"
+                              data-text="Des publicités vidéo IA haute conversion sans tournage studio"
+                              data-speed="28"
+                              data-immediate="true"></span>
+                    </h1>
+
+                    <!-- Sous-titre -->
+                    <p class="mt-6 text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto">
+                        Transformez vos produits e-commerce en créatives cinématographiques pensées pour arrêter le scroll sur <strong class="text-white">Meta Ads</strong>, <strong class="text-white">Instagram Reels</strong> et <strong class="text-white">TikTok</strong> — livrées en <span class="text-gold-400 font-semibold">48h</span>, sans plateau ni acteurs.
+                    </p>
+
+                    <!-- Boutons CTA Hero -->
+                    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="#portfolio" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl font-bold text-base text-white btn-neon">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                            <span>Voir nos créatives</span>
+                        </a>
+                        <a href="#commander" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl font-bold text-base text-white bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-400/50 hover:border-emerald-300 backdrop-blur-md shadow-[0_0_24px_rgba(16,185,129,0.2)] transition-all active:scale-95">
+                            <svg class="w-5 h-5 text-emerald-400 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12.031 2C6.51 2 2.018 6.492 2.018 12.013c0 1.766.461 3.49 1.337 5.012L2 22l5.105-1.339a9.955 9.955 0 004.926 1.298h.004c5.52 0 10.012-4.492 10.012-10.013 0-2.675-1.042-5.19-2.934-7.081A9.946 9.946 0 0012.031 2zm5.825 14.172c-.246.693-1.434 1.326-1.988 1.409-.513.077-1.179.109-1.903-.121-.443-.141-1.01-.329-1.737-.644-3.058-1.322-5.055-4.406-5.208-4.61-.153-.204-1.242-1.653-1.242-3.153s.785-2.238 1.064-2.543c.279-.305.609-.382.812-.382.203 0 .406.002.584.011.187.009.439-.071.686.524.254.611.864 2.111.94 2.264.076.153.127.331.025.535-.102.203-.153.331-.305.509-.153.178-.321.397-.458.533-.153.152-.312.318-.134.624.178.305.792 1.307 1.701 2.117 1.168 1.042 2.154 1.365 2.459 1.518.305.152.483.127.661-.077.178-.203.762-.891.965-1.196.203-.305.406-.254.686-.152.279.102 1.778.839 2.083.991.305.153.508.229.584.356.077.128.077.739-.169 1.432z"/>
+                            </svg>
+                            <span>Commander sur WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bande de 4 statistiques animées au scroll -->
+                <div class="mt-16 lg:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                    <!-- Stat 1 : +340% -->
+                    <div class="reveal-kinetic glass-card tilt-card rounded-3xl p-6 sm:p-7 text-center">
+                        <span class="inline-block px-2.5 py-0.5 rounded-full bg-electric-400/10 border border-electric-400/30 text-[10px] font-mono font-bold uppercase tracking-wider text-electric-400 mb-3">
+                            Performance
+                        </span>
+                        <p class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-electric-400 to-electric-300">
+                            <span class="stat-counter" data-target="340" data-prefix="+" data-suffix="%">+0%</span>
+                        </p>
+                        <p class="mt-2.5 text-xs sm:text-sm font-medium text-slate-300">
+                            Taux d'attention / Hook Rate
+                        </p>
+                    </div>
+
+                    <!-- Stat 2 : 0 € -->
+                    <div class="reveal-kinetic glass-card tilt-card rounded-3xl p-6 sm:p-7 text-center" style="transition-delay: 80ms;">
+                        <span class="inline-block px-2.5 py-0.5 rounded-full bg-gold-400/10 border border-gold-400/35 text-[10px] font-mono font-bold uppercase tracking-wider text-gold-400 mb-3">
+                            Budget Optimisé
+                        </span>
+                        <p class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-300">
+                            <span class="stat-counter" data-target="0" data-prefix="" data-suffix=" €">0 €</span>
+                        </p>
+                        <p class="mt-2.5 text-xs sm:text-sm font-medium text-slate-300">
+                            Frais de tournage studio
+                        </p>
+                    </div>
+
+                    <!-- Stat 3 : 48h -->
+                    <div class="reveal-kinetic glass-card tilt-card rounded-3xl p-6 sm:p-7 text-center" style="transition-delay: 160ms;">
+                        <span class="inline-block px-2.5 py-0.5 rounded-full bg-neon-500/15 border border-neon-400/35 text-[10px] font-mono font-bold uppercase tracking-wider text-neon-300 mb-3">
+                            Vélocité
+                        </span>
+                        <p class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-neon-300 to-neon-500">
+                            <span class="stat-counter" data-target="48" data-prefix="" data-suffix="h">0h</span>
+                        </p>
+                        <p class="mt-2.5 text-xs sm:text-sm font-medium text-slate-300">
+                            Livraison rapide
+                        </p>
+                    </div>
+
+                    <!-- Stat 4 : 100% -->
+                    <div class="reveal-kinetic glass-card tilt-card rounded-3xl p-6 sm:p-7 text-center" style="transition-delay: 240ms;">
+                        <span class="inline-block px-2.5 py-0.5 rounded-full bg-emerald-400/10 border border-emerald-400/30 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400 mb-3">
+                            Sur-Mesure
+                        </span>
+                        <p class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-electric-400">
+                            <span class="stat-counter" data-target="100" data-prefix="" data-suffix="%">0%</span>
+                        </p>
+                        <p class="mt-2.5 text-xs sm:text-sm font-medium text-slate-300">
+                            Sur-mesure par IA
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ruban Marquee Néon -->
+        <div class="marquee-container relative py-3.5 border-y border-white/10 bg-midnight-900/75 backdrop-blur-xl overflow-hidden" aria-hidden="true">
+            <div class="marquee-track flex items-center gap-10 whitespace-nowrap font-display font-bold text-xs sm:text-sm tracking-[0.22em] uppercase text-slate-200">
+                <div class="flex items-center gap-10 pr-10">
+                    <span class="text-electric-400">META ADS</span><span class="text-gold-400">&bull;</span>
+                    <span>TIKTOK ADS</span><span class="text-neon-400">&bull;</span>
+                    <span class="text-neon-300">INSTAGRAM REELS</span><span class="text-electric-400">&bull;</span>
+                    <span class="text-gold-400">RENDU CINÉMATOGRAPHIQUE 1080P</span><span class="text-neon-400">&bull;</span>
+                    <span>ZÉRO TOURNAGE STUDIO</span><span class="text-electric-400">&bull;</span>
+                    <span>LIVRAISON 48H</span><span class="text-gold-400">&bull;</span>
+                </div>
+                <div class="flex items-center gap-10 pr-10">
+                    <span class="text-electric-400">META ADS</span><span class="text-gold-400">&bull;</span>
+                    <span>TIKTOK ADS</span><span class="text-neon-400">&bull;</span>
+                    <span class="text-neon-300">INSTAGRAM REELS</span><span class="text-electric-400">&bull;</span>
+                    <span class="text-gold-400">RENDU CINÉMATOGRAPHIQUE 1080P</span><span class="text-neon-400">&bull;</span>
+                    <span>ZÉRO TOURNAGE STUDIO</span><span class="text-electric-400">&bull;</span>
+                    <span>LIVRAISON 48H</span><span class="text-gold-400">&bull;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- 3. SECTION PORTFOLIO — 3 VIDÉOS DANS L'ORDRE EXACT        -->
+        <!--    #1 KRONOS (XwylyBSBrrM)                                -->
+        <!--    #2 AURA C (fEDK0CTtIt8)                                -->
+        <!--    #3 NOCTURNE (XmMjkZaUfYc)                              -->
+        <!-- ========================================================= -->
+        <section id="portfolio" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-electric-400/10 border border-electric-400/30 font-mono text-xs font-bold uppercase tracking-[0.2em] text-electric-400 mb-4">
+                        Portfolio &bull; Format Vertical 9:16
+                    </span>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight min-h-[1.3em]"
+                        aria-label="Nos créatives vidéo IA en action">
+                        <span class="typewriter-target" data-text="Nos créatives vidéo IA en action" data-speed="30"></span>
+                    </h2>
+                    <p class="mt-4 text-slate-300 text-base sm:text-lg reveal-kinetic">
+                        Découvrez nos 3 démonstrations publicitaires produites 100 % par intelligence artificielle : visuels luxe, animations cinématographiques et montage calibré pour la conversion.
+                    </p>
+                </div>
+
+                <!-- Grille 3 colonnes desktop / 1 colonne mobile -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-9 max-w-6xl mx-auto items-stretch">
+
+                    <!-- =================================================== -->
+                    <!-- VIDÉO 1 : Chronographe Luxe — KRONOS (XwylyBSBrrM)  -->
+                    <!-- =================================================== -->
+                    <article class="reveal-kinetic flex flex-col items-center">
+                        <!-- Maquette Smartphone 9:16 -->
+                        <div class="phone-frame tilt-frame w-full max-w-[325px] rounded-[2.6rem] p-3">
+                            <!-- Encoche décorative -->
+                            <div class="pointer-events-none flex items-center justify-center mb-2.5">
+                                <div class="w-20 h-4 rounded-full bg-black/90 border border-white/10 flex items-center justify-end px-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-electric-400"></span>
+                                </div>
+                            </div>
+
+                            <!-- Lecteur YouTube 9:16 (anti-Erreur 153) -->
+                            <div class="relative z-20 w-full aspect-[9/16] rounded-[1.9rem] overflow-hidden bg-black border border-white/10">
+                                <iframe
+                                    class="w-full h-full block"
+                                    src="https://www.youtube.com/embed/XwylyBSBrrM?rel=0&modestbranding=1"
+                                    title="DÉMO #1 — Chronographe Luxe — KRONOS"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+
+                            <!-- Barre d'accueil décorative -->
+                            <div class="pointer-events-none flex justify-center mt-2.5">
+                                <div class="w-24 h-1 rounded-full bg-white/20"></div>
+                            </div>
+                        </div>
+
+                        <!-- Infos Vidéo 1 -->
+                        <div class="mt-6 w-full max-w-[325px] flex-1 flex flex-col justify-between text-center glass-card rounded-2xl p-5">
+                            <div>
+                                <span class="inline-block px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-electric-400/15 text-electric-400 border border-electric-400/35 mb-3">
+                                    DÉMO #1 &bull; 25 SEC &bull; HORLOGERIE
+                                </span>
+                                <h3 class="font-display font-bold text-xl text-white">
+                                    Chronographe Luxe — KRONOS
+                                </h3>
+                                <p class="mt-2 text-sm text-slate-300 leading-relaxed">
+                                    Éclaboussure d'eau au ralenti, zoom macro sur le cadran en acier brossé, reflets bleu électrique et packshot héroïque.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-white/10">
+                                <a href="https://youtube.com/shorts/XwylyBSBrrM" target="_blank" rel="noopener noreferrer"
+                                   class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-electric-400 hover:text-gold-400 transition-colors">
+                                    <span>Voir sur YouTube ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- =================================================== -->
+                    <!-- VIDÉO 2 : Sérum Visage Vitamine C — AURA C (fEDK0CTtIt8) -->
+                    <!-- =================================================== -->
+                    <article class="reveal-kinetic flex flex-col items-center" style="transition-delay: 110ms;">
+                        <!-- Maquette Smartphone 9:16 -->
+                        <div class="phone-frame tilt-frame w-full max-w-[325px] rounded-[2.6rem] p-3">
+                            <div class="pointer-events-none flex items-center justify-center mb-2.5">
+                                <div class="w-20 h-4 rounded-full bg-black/90 border border-white/10 flex items-center justify-end px-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+                                </div>
+                            </div>
+
+                            <!-- Lecteur YouTube 9:16 (anti-Erreur 153) -->
+                            <div class="relative z-20 w-full aspect-[9/16] rounded-[1.9rem] overflow-hidden bg-black border border-white/10">
+                                <iframe
+                                    class="w-full h-full block"
+                                    src="https://www.youtube.com/embed/fEDK0CTtIt8?rel=0&modestbranding=1"
+                                    title="DÉMO #2 — Sérum Visage Vitamine C — AURA C"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+
+                            <div class="pointer-events-none flex justify-center mt-2.5">
+                                <div class="w-24 h-1 rounded-full bg-white/20"></div>
+                            </div>
+                        </div>
+
+                        <!-- Infos Vidéo 2 -->
+                        <div class="mt-6 w-full max-w-[325px] flex-1 flex flex-col justify-between text-center glass-card rounded-2xl p-5">
+                            <div>
+                                <span class="inline-block px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-gold-400/15 text-gold-400 border border-gold-400/35 mb-3">
+                                    DÉMO #2 &bull; 20 SEC &bull; COSMÉTIQUE
+                                </span>
+                                <h3 class="font-display font-bold text-xl text-white">
+                                    Sérum Visage Vitamine C — AURA C
+                                </h3>
+                                <p class="mt-2 text-sm text-slate-300 leading-relaxed">
+                                    Hook visuel goutte dorée en macro, révélation produit sur pierre naturelle, éclat immédiat sur la peau et packshot lumineux.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-white/10">
+                                <a href="https://youtube.com/shorts/fEDK0CTtIt8" target="_blank" rel="noopener noreferrer"
+                                   class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-electric-400 hover:text-gold-400 transition-colors">
+                                    <span>Voir sur YouTube ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- =================================================== -->
+                    <!-- VIDÉO 3 : Parfum d'Exception — NOCTURNE (XmMjkZaUfYc) -->
+                    <!-- =================================================== -->
+                    <article class="reveal-kinetic flex flex-col items-center" style="transition-delay: 220ms;">
+                        <!-- Maquette Smartphone 9:16 -->
+                        <div class="phone-frame tilt-frame w-full max-w-[325px] rounded-[2.6rem] p-3">
+                            <div class="pointer-events-none flex items-center justify-center mb-2.5">
+                                <div class="w-20 h-4 rounded-full bg-black/90 border border-white/10 flex items-center justify-end px-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-neon-400"></span>
+                                </div>
+                            </div>
+
+                            <!-- Lecteur YouTube 9:16 (anti-Erreur 153) -->
+                            <div class="relative z-20 w-full aspect-[9/16] rounded-[1.9rem] overflow-hidden bg-black border border-white/10">
+                                <iframe
+                                    class="w-full h-full block"
+                                    src="https://www.youtube.com/embed/XmMjkZaUfYc?rel=0&modestbranding=1"
+                                    title="DÉMO #3 — Parfum d'Exception — NOCTURNE"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+
+                            <div class="pointer-events-none flex justify-center mt-2.5">
+                                <div class="w-24 h-1 rounded-full bg-white/20"></div>
+                            </div>
+                        </div>
+
+                        <!-- Infos Vidéo 3 -->
+                        <div class="mt-6 w-full max-w-[325px] flex-1 flex flex-col justify-between text-center glass-card rounded-2xl p-5">
+                            <div>
+                                <span class="inline-block px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-neon-500/20 text-neon-300 border border-neon-400/40 mb-3">
+                                    DÉMO #3 &bull; 30 SEC &bull; PARFUMERIE
+                                </span>
+                                <h3 class="font-display font-bold text-xl text-white">
+                                    Parfum d'Exception — NOCTURNE
+                                </h3>
+                                <p class="mt-2 text-sm text-slate-300 leading-relaxed">
+                                    Nuage de brume scintillante, flacon verre fumé sur obsidienne, notes rares (oud, ambre, vanille) et sillage magnétique.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-white/10">
+                                <a href="https://youtube.com/shorts/XmMjkZaUfYc" target="_blank" rel="noopener noreferrer"
+                                   class="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-electric-400 hover:text-gold-400 transition-colors">
+                                    <span>Voir sur YouTube ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- 4. SECTION MÉTHODE EN 3 ÉTAPES CLAIRES                    -->
+        <!-- ========================================================= -->
+        <section id="methode" class="py-24 relative bg-midnight-900/50 border-y border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-neon-500/20 border border-neon-400/35 font-mono text-xs font-bold uppercase tracking-[0.2em] text-neon-300 mb-4">
+                        Méthode Express
+                    </span>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight min-h-[1.3em]"
+                        aria-label="De votre fiche produit à vos pubs gagnantes">
+                        <span class="typewriter-target" data-text="De votre fiche produit à vos pubs gagnantes" data-speed="30"></span>
+                    </h2>
+                    <p class="mt-4 text-slate-300 text-base sm:text-lg reveal-kinetic">
+                        Un processus simple en 3 étapes, zéro logistique d'expédition et des créatives prêtes à tourner rapidement.
+                    </p>
+                </div>
+
+                <!-- 3 Cartes Étapes -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                    <!-- Ligne de connexion néon sur Desktop -->
+                    <div class="hidden md:block pointer-events-none absolute top-16 left-[17%] right-[17%] h-[2px] bg-gradient-to-r from-electric-400/50 via-neon-400/80 to-gold-400/60"></div>
+
+                    <!-- Étape 1 -->
+                    <div class="reveal-kinetic glass-card tilt-card rounded-3xl p-8 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-electric-400 to-electric-500 text-midnight-950 font-display font-bold text-xl shadow-neon-cyan">
+                                    01
+                                </div>
+                                <span class="text-xs font-mono font-bold text-electric-400 uppercase tracking-widest">Brief Direct</span>
+                            </div>
+                            <h3 class="font-display font-bold text-xl sm:text-2xl text-white mb-3">
+                                Partagez votre produit
+                            </h3>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                                Envoyez simplement le lien de votre boutique et quelques photos de votre produit via WhatsApp. Pas besoin d'envoyer de colis physique.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/10 text-xs font-mono text-slate-400">
+                            ⚡ Mise en route immédiate sur WhatsApp
+                        </div>
+                    </div>
+
+                    <!-- Étape 2 -->
+                    <div class="reveal-kinetic glass-card tilt-card rounded-3xl p-8 flex flex-col justify-between" style="transition-delay: 110ms;">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-neon-500 to-neon-400 text-white font-display font-bold text-xl shadow-neon-violet">
+                                    02
+                                </div>
+                                <span class="text-xs font-mono font-bold text-neon-300 uppercase tracking-widest">Studio IA</span>
+                            </div>
+                            <h3 class="font-display font-bold text-xl sm:text-2xl text-white mb-3">
+                                Production IA cinématographique en 48h
+                            </h3>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                                Nous écrivons des hooks percutants, générons vos décors de luxe, animons chaque plan en 1080p et finalisons le montage avec sound design.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/10 text-xs font-mono text-slate-400">
+                            🎬 Qualité studio livrée sous 48 heures
+                        </div>
+                    </div>
+
+                    <!-- Étape 3 -->
+                    <div class="reveal-kinetic glass-card tilt-card rounded-3xl p-8 flex flex-col justify-between" style="transition-delay: 220ms;">
+                        <div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-gold-400 to-amber-500 text-midnight-950 font-display font-bold text-xl shadow-neon-gold">
+                                    03
+                                </div>
+                                <span class="text-xs font-mono font-bold text-gold-400 uppercase tracking-widest">Conversion</span>
+                            </div>
+                            <h3 class="font-display font-bold text-xl sm:text-2xl text-white mb-3">
+                                Lancez vos pubs Meta / TikTok et convertissez
+                            </h3>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                                Recevez vos vidéos 9:16 prêtes à diffuser sur Facebook Ads, Instagram Reels et TikTok Ads pour capter l'attention et booster vos ventes.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/10 text-xs font-mono text-slate-400">
+                            🚀 Prêt à scaler vos campagnes e-commerce
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- 5. SECTION OFFRES (TOUTES "SUR DEVIS", ZÉRO PRIX CHIFFRÉ) -->
+        <!-- ========================================================= -->
+        <section id="offres" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gold-400/10 border border-gold-400/35 font-mono text-xs font-bold uppercase tracking-[0.2em] text-gold-400 mb-4">
+                        Formules Sur Mesure
+                    </span>
+                    <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight min-h-[1.3em]"
+                        aria-label="Choisissez votre formule créative">
+                        <span class="typewriter-target" data-text="Choisissez votre formule créative" data-speed="30"></span>
+                    </h2>
+                    <p class="mt-4 text-slate-300 text-base sm:text-lg reveal-kinetic">
+                        Chaque marque a ses propres objectifs. Sélectionnez la formule adaptée et obtenez votre <strong class="text-white">devis personnalisé</strong> en quelques minutes sur WhatsApp.
+                    </p>
+                </div>
+
+                <!-- 3 Cartes Offres -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+
+                    <!-- Offre 1 : Vidéo Test Découverte -->
+                    <div class="reveal-kinetic glass-card tilt-card rounded-3xl p-8 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-6">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-electric-400/15 text-electric-300 border border-electric-400/30">
+                                    Démarrage Rapide
+                                </span>
+                                <span class="px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-white/10 text-white border border-white/20">
+                                    Sur devis
+                                </span>
+                            </div>
+
+                            <h3 class="font-display font-bold text-2xl text-white">
+                                Vidéo Test Découverte
+                            </h3>
+                            <p class="mt-2 font-mono text-sm font-bold text-electric-400 uppercase tracking-wider">
+                                Tarif sur devis
+                            </p>
+                            <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+                                Idéal pour tester la puissance des publicités vidéo IA sur votre produit phare sans engagement.
+                            </p>
+
+                            <ul class="mt-7 space-y-3.5 text-sm text-slate-200">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-electric-400 font-bold">✓</span>
+                                    <span><strong>1 publicité vidéo IA</strong> (20 à 30 secondes)</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-electric-400 font-bold">✓</span>
+                                    <span>Format vertical <strong>9:16 Full HD 1080p</strong></span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-electric-400 font-bold">✓</span>
+                                    <span>Script d'accroche, transitions pro &amp; sound design</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-electric-400 font-bold">✓</span>
+                                    <span><strong>Livraison express en 48h</strong></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-9">
+                            <button type="button" onclick="selectOfferAndScroll('Vidéo Test Découverte')"
+                                    class="w-full py-3.5 px-6 rounded-2xl font-bold text-sm sm:text-base text-white bg-white/10 hover:bg-white/15 border border-white/15 hover:border-electric-400/65 transition-all active:scale-95">
+                                Commander
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Offre 2 (Populaire / Mise en avant) : Pack Croissance E-commerce -->
+                    <div class="reveal-kinetic neon-animated-border tilt-card rounded-3xl p-8 flex flex-col justify-between shadow-neon-violet lg:-translate-y-3" style="transition-delay: 110ms;">
+                        <!-- Badge Populaire -->
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-gradient-to-r from-gold-400 via-amber-300 to-gold-400 text-midnight-950 text-[11px] font-mono font-extrabold uppercase tracking-widest shadow-neon-gold whitespace-nowrap">
+                            ★ Populaire &bull; Recommandé
+                        </div>
+
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-6 mt-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-neon-500/25 text-neon-300 border border-neon-400/40">
+                                    Scaling &amp; A/B Testing
+                                </span>
+                                <span class="px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-gold-400/15 text-gold-400 border border-gold-400/40">
+                                    Sur devis
+                                </span>
+                            </div>
+
+                            <h3 class="font-display font-bold text-2xl sm:text-3xl text-white">
+                                Pack Croissance E-commerce
+                            </h3>
+                            <p class="mt-2 font-mono text-sm font-bold text-gold-400 uppercase tracking-wider">
+                                Tarif sur devis
+                            </p>
+                            <p class="mt-3 text-sm text-slate-200 leading-relaxed">
+                                Le format le plus rentable pour tester plusieurs angles marketing et scaler vos campagnes Meta &amp; TikTok Ads.
+                            </p>
+
+                            <ul class="mt-7 space-y-3.5 text-sm text-slate-100">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-gold-400 font-bold">✓</span>
+                                    <span><strong>5 déclinaisons vidéo IA</strong> haute conversion</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-gold-400 font-bold">✓</span>
+                                    <span><strong>Hooks variés</strong> pour tester ce qui génère le meilleur ROAS</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-gold-400 font-bold">✓</span>
+                                    <span>Optimisé <strong>9:16 1080p</strong> pour Meta Ads, Reels &amp; TikTok</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-gold-400 font-bold">✓</span>
+                                    <span>Sound design cinématographique &amp; textes dynamiques</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-gold-400 font-bold">✓</span>
+                                    <span>Production prioritaire &amp; suivi direct WhatsApp</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-9">
+                            <button type="button" onclick="selectOfferAndScroll('Pack Croissance E-commerce', 'Pack de 5 vidéos')"
+                                    class="w-full py-4 px-6 rounded-2xl font-bold text-base text-white btn-neon">
+                                Commander
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Offre 3 : Partenariat Mensuel Agence -->
+                    <div class="reveal-kinetic glass-card tilt-card rounded-3xl p-8 flex flex-col justify-between" style="transition-delay: 220ms;">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-6">
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-neon-500/20 text-neon-300 border border-neon-400/35">
+                                    Flux Continu
+                                </span>
+                                <span class="px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-white/10 text-white border border-white/20">
+                                    Sur devis
+                                </span>
+                            </div>
+
+                            <h3 class="font-display font-bold text-2xl text-white">
+                                Partenariat Mensuel Agence
+                            </h3>
+                            <p class="mt-2 font-mono text-sm font-bold text-neon-300 uppercase tracking-wider">
+                                Tarif sur devis
+                            </p>
+                            <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+                                Alimentez vos comptes publicitaires chaque mois avec un flux constant de nouvelles créatives IA gagnantes.
+                            </p>
+
+                            <ul class="mt-7 space-y-3.5 text-sm text-slate-200">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-neon-400 font-bold">✓</span>
+                                    <span><strong>Flux continu</strong> de nouvelles créatives IA chaque mois</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-neon-400 font-bold">✓</span>
+                                    <span>Renouvellement permanent contre la <strong>fatigue publicitaire</strong></span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-neon-400 font-bold">✓</span>
+                                    <span>Déclinaisons sur plusieurs produits de votre catalogue</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-neon-400 font-bold">✓</span>
+                                    <span>Accompagnement dédié &amp; livraison prioritaire</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-9">
+                            <button type="button" onclick="selectOfferAndScroll('Partenariat Mensuel Agence')"
+                                    class="w-full py-3.5 px-6 rounded-2xl font-bold text-sm sm:text-base text-white bg-white/10 hover:bg-white/15 border border-white/15 hover:border-neon-400/65 transition-all active:scale-95">
+                                Commander
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- 6. FORMULAIRE DE COMMANDE CONNECTÉ À WHATSAPP (237689851408) -->
+        <!-- ========================================================= -->
+        <section id="commander" class="py-24 relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal-kinetic neon-animated-border rounded-[2.2rem] p-6 sm:p-10 lg:p-12 shadow-glass-deep relative overflow-hidden">
+                    <!-- Halos décoratifs internes -->
+                    <div class="pointer-events-none absolute -top-24 -right-24 w-72 h-72 bg-neon-500/20 rounded-full blur-3xl"></div>
+                    <div class="pointer-events-none absolute -bottom-24 -left-24 w-72 h-72 bg-electric-400/15 rounded-full blur-3xl"></div>
+
+                    <div class="relative z-10">
+                        <div class="text-center mb-10">
+                            <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/35 font-mono text-xs font-bold uppercase tracking-[0.2em] text-emerald-400 mb-4">
+                                Commande Directe WhatsApp
+                            </span>
+                            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight min-h-[1.3em]"
+                                aria-label="Lancez votre publicité vidéo IA">
+                                <span class="typewriter-target" data-text="Lancez votre publicité vidéo IA" data-speed="30"></span>
+                            </h2>
+                            <p class="mt-3 text-slate-300 text-sm sm:text-base max-w-xl mx-auto">
+                                Remplissez ce brief en 30 secondes : votre message est préparé automatiquement et envoyé sur notre WhatsApp pour recevoir votre devis rapide.
+                            </p>
+                        </div>
+
+                        <!-- Boîte d'erreur inline (zéro alert()) -->
+                        <div id="form-error" class="hidden mb-6 p-4 rounded-2xl bg-red-500/15 border border-red-400/40 text-red-200 text-sm flex items-center gap-3">
+                            <svg class="w-5 h-5 shrink-0 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span id="form-error-msg">Merci de renseigner les champs obligatoires.</span>
+                        </div>
+
+                        <form id="whatsapp-order-form" class="space-y-6" novalidate>
+                            <!-- Ligne 1 : Nom / Prénom + Nom de la marque -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="client-name" class="block text-sm font-medium text-slate-200 mb-2">
+                                        Nom / Prénom <span class="text-gold-400">*</span>
+                                    </label>
+                                    <input type="text" id="client-name" required placeholder="Ex : Lucas Martin"
+                                           class="w-full px-4 py-3.5 rounded-xl bg-midnight-950/90 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-electric-400 focus:ring-2 focus:ring-electric-400/25 transition-all">
+                                </div>
+
+                                <div>
+                                    <label for="brand-name" class="block text-sm font-medium text-slate-200 mb-2">
+                                        Nom de la marque <span class="text-gold-400">*</span>
+                                    </label>
+                                    <input type="text" id="brand-name" required placeholder="Ex : Maison Aura"
+                                           class="w-full px-4 py-3.5 rounded-xl bg-midnight-950/90 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-electric-400 focus:ring-2 focus:ring-electric-400/25 transition-all">
+                                </div>
+                            </div>
+
+                            <!-- Ligne 2 : Lien du site ou boutique + Offre souhaitée -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="shop-link" class="block text-sm font-medium text-slate-200 mb-2">
+                                        Lien du site ou boutique
+                                    </label>
+                                    <input type="text" id="shop-link" placeholder="Ex : https://ma-boutique.com"
+                                           class="w-full px-4 py-3.5 rounded-xl bg-midnight-950/90 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-electric-400 focus:ring-2 focus:ring-electric-400/25 transition-all">
+                                </div>
+
+                                <div>
+                                    <label for="offer-select" class="block text-sm font-medium text-slate-200 mb-2">
+                                        Offre souhaitée
+                                    </label>
+                                    <div class="relative">
+                                        <select id="offer-select"
+                                                class="w-full appearance-none px-4 py-3.5 pr-10 rounded-xl bg-midnight-950/95 border border-white/15 text-white focus:outline-none focus:border-neon-400 focus:ring-2 focus:ring-neon-400/25 transition-all cursor-pointer">
+                                            <option value="Vidéo Test Découverte">Vidéo Test Découverte (Sur devis)</option>
+                                            <option value="Pack Croissance E-commerce" selected>Pack Croissance E-commerce (Sur devis)</option>
+                                            <option value="Partenariat Mensuel Agence">Partenariat Mensuel Agence (Sur devis)</option>
+                                        </select>
+                                        <svg class="w-5 h-5 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ligne 3 : Durée souhaitée (4 choix stylisés) -->
+                            <div>
+                                <span class="block text-sm font-medium text-slate-200 mb-2.5">
+                                    Durée souhaitée
+                                </span>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                    <label class="duration-radio cursor-pointer">
+                                        <input type="radio" name="duration" value="20 sec" class="sr-only">
+                                        <span class="flex flex-col items-center justify-center py-3.5 px-2 rounded-xl bg-midnight-950/85 border border-white/15 text-slate-300 hover:border-electric-400/45 transition-all text-center">
+                                            <strong class="font-display text-base">20 sec</strong>
+                                            <small class="text-[11px] opacity-80 mt-0.5">Format court</small>
+                                        </span>
+                                    </label>
+                                    <label class="duration-radio cursor-pointer">
+                                        <input type="radio" name="duration" value="25 sec" class="sr-only">
+                                        <span class="flex flex-col items-center justify-center py-3.5 px-2 rounded-xl bg-midnight-950/85 border border-white/15 text-slate-300 hover:border-electric-400/45 transition-all text-center">
+                                            <strong class="font-display text-base">25 sec</strong>
+                                            <small class="text-[11px] opacity-80 mt-0.5">Standard Ads</small>
+                                        </span>
+                                    </label>
+                                    <label class="duration-radio cursor-pointer">
+                                        <input type="radio" name="duration" value="30 sec" class="sr-only">
+                                        <span class="flex flex-col items-center justify-center py-3.5 px-2 rounded-xl bg-midnight-950/85 border border-white/15 text-slate-300 hover:border-electric-400/45 transition-all text-center">
+                                            <strong class="font-display text-base">30 sec</strong>
+                                            <small class="text-[11px] opacity-80 mt-0.5">Storytelling</small>
+                                        </span>
+                                    </label>
+                                    <label class="duration-radio cursor-pointer">
+                                        <input type="radio" name="duration" value="Pack de 5 vidéos" class="sr-only" checked>
+                                        <span class="flex flex-col items-center justify-center py-3.5 px-2 rounded-xl bg-midnight-950/85 border border-white/15 text-slate-300 hover:border-gold-400/55 transition-all text-center">
+                                            <strong class="font-display text-base">Pack 5 vidéos</strong>
+                                            <small class="text-[11px] opacity-80 mt-0.5">A/B Testing</small>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Ligne 4 : Message / Détails sur le produit -->
+                            <div>
+                                <label for="product-details" class="block text-sm font-medium text-slate-200 mb-2">
+                                    Message / Détails sur le produit
+                                </label>
+                                <textarea id="product-details" rows="4"
+                                          placeholder="Décrivez votre produit, l'ambiance souhaitée (luxe, dynamique, minimaliste...) et vos plateformes cibles (Meta Ads, TikTok, Reels)..."
+                                          class="w-full px-4 py-3.5 rounded-xl bg-midnight-950/90 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-electric-400 focus:ring-2 focus:ring-electric-400/25 transition-all resize-y"></textarea>
+                            </div>
+
+                            <!-- Bouton d'envoi WhatsApp -->
+                            <button type="submit"
+                                    class="w-full flex items-center justify-center gap-3 py-4 px-8 rounded-2xl font-bold text-base sm:text-lg text-white bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:brightness-110 shadow-[0_0_32px_rgba(16,185,129,0.42)] transition-all active:scale-[0.98]">
+                                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12.031 2C6.51 2 2.018 6.492 2.018 12.013c0 1.766.461 3.49 1.337 5.012L2 22l5.105-1.339a9.955 9.955 0 004.926 1.298h.004c5.52 0 10.012-4.492 10.012-10.013 0-2.675-1.042-5.19-2.934-7.081A9.946 9.946 0 0012.031 2zm5.825 14.172c-.246.693-1.434 1.326-1.988 1.409-.513.077-1.179.109-1.903-.121-.443-.141-1.01-.329-1.737-.644-3.058-1.322-5.055-4.406-5.208-4.61-.153-.204-1.242-1.653-1.242-3.153s.785-2.238 1.064-2.543c.279-.305.609-.382.812-.382.203 0 .406.002.584.011.187.009.439-.071.686.524.254.611.864 2.111.94 2.264.076.153.127.331.025.535-.102.203-.153.331-.305.509-.153.178-.321.397-.458.533-.153.152-.312.318-.134.624.178.305.792 1.307 1.701 2.117 1.168 1.042 2.154 1.365 2.459 1.518.305.152.483.127.661-.077.178-.203.762-.891.965-1.196.203-.305.406-.254.686-.152.279.102 1.778.839 2.083.991.305.153.508.229.584.356.077.128.077.739-.169 1.432z"/>
+                                </svg>
+                                <span>Envoyer ma commande sur WhatsApp</span>
+                            </button>
+                        </form>
+
+                        <!-- Lien de secours au cas où le navigateur bloque les popups -->
+                        <div id="order-fallback-box" class="hidden mt-6 p-5 rounded-2xl bg-emerald-500/15 border border-emerald-400/35 text-emerald-100">
+                            <p class="text-sm">
+                                Votre message est prêt ! Si WhatsApp ne s'est pas ouvert automatiquement, cliquez sur le bouton ci-dessous :
+                            </p>
+                            <a id="order-fallback-link" href="#" target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center gap-2 mt-3 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-semibold text-sm transition-colors">
+                                Ouvrir WhatsApp maintenant ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================================= -->
+    <!-- 7. FOOTER COMPLET CRÉATIVE AD                             -->
+    <!-- ========================================================= -->
+    <footer class="relative z-10 border-t border-white/10 bg-midnight-950/90 backdrop-blur-xl py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="text-center md:text-left">
+                    <a href="#" class="font-display font-bold text-xl tracking-tight text-white">
+                        CRÉATIVE <span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-400 to-neon-400">AD</span>
+                    </a>
+                    <p class="text-xs font-mono uppercase tracking-[0.18em] text-gold-400 mt-1">
+                        PUBLICITÉS VIDÉO IA
+                    </p>
+                    <p class="text-sm text-slate-400 mt-1.5">
+                        Créatives vidéo 9:16 haute conversion pour marques e-commerce — Meta Ads, Reels &amp; TikTok.
+                    </p>
+                </div>
+
+                <nav class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+                    <a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a>
+                    <a href="#methode" class="hover:text-white transition-colors">Méthode</a>
+                    <a href="#offres" class="hover:text-white transition-colors">Offres</a>
+                    <a href="#commander" class="hover:text-white transition-colors">Commander</a>
+                    <a href="https://wa.me/237689851408" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 font-semibold transition-colors">
+                        <span>WhatsApp Direct ↗</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+                <p>&copy; 2026 CRÉATIVE AD. Tous droits réservés.</p>
+                <p>Publicités Vidéo IA 9:16 &bull; Zéro Tournage Studio &bull; Livraison 48h</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================================= -->
+    <!-- BOUTON FLOTTANT WHATSAPP ANIMÉ (BAS DROITE)               -->
+    <!-- ========================================================= -->
+    <a href="https://wa.me/237689851408?text=Bonjour%20CR%C3%89ATIVE%20AD%20%F0%9F%91%8B%20Je%20souhaite%20obtenir%20un%20devis%20pour%20une%20publicit%C3%A9%20vid%C3%A9o%20par%20IA."
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Contacter CRÉATIVE AD sur WhatsApp"
+       class="fixed bottom-5 right-5 z-50 group flex items-center gap-3">
+        <span class="hidden sm:inline-block px-3.5 py-2 rounded-xl bg-midnight-900/95 border border-electric-400/40 text-xs font-semibold text-white shadow-glass-deep opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all pointer-events-none">
+            Discuter sur WhatsApp
+        </span>
+        <span class="wa-float-pulse relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-500 via-teal-400 to-electric-400 text-white group-hover:scale-110 transition-transform">
+            <svg class="w-7 h-7 fill-current relative z-10" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.031 2C6.51 2 2.018 6.492 2.018 12.013c0 1.766.461 3.49 1.337 5.012L2 22l5.105-1.339a9.955 9.955 0 004.926 1.298h.004c5.52 0 10.012-4.492 10.012-10.013 0-2.675-1.042-5.19-2.934-7.081A9.946 9.946 0 0012.031 2zm5.825 14.172c-.246.693-1.434 1.326-1.988 1.409-.513.077-1.179.109-1.903-.121-.443-.141-1.01-.329-1.737-.644-3.058-1.322-5.055-4.406-5.208-4.61-.153-.204-1.242-1.653-1.242-3.153s.785-2.238 1.064-2.543c.279-.305.609-.382.812-.382.203 0 .406.002.584.011.187.009.439-.071.686.524.254.611.864 2.111.94 2.264.076.153.127.331.025.535-.102.203-.153.331-.305.509-.153.178-.321.397-.458.533-.153.152-.312.318-.134.624.178.305.792 1.307 1.701 2.117 1.168 1.042 2.154 1.365 2.459 1.518.305.152.483.127.661-.077.178-.203.762-.891.965-1.196.203-.305.406-.254.686-.152.279.102 1.778.839 2.083.991.305.153.508.229.584.356.077.128.077.739-.169 1.432z"/>
+            </svg>
+        </span>
+    </a>
+
+    <!-- ========================================================= -->
+    <!-- TOAST DE CONFIRMATION                                     -->
+    <!-- ========================================================= -->
+    <div id="toast-notification" role="status" aria-live="polite"
+         class="fixed bottom-6 left-1/2 z-[115] w-[92%] max-w-md p-4 rounded-2xl bg-midnight-900/95 border border-emerald-400/45 shadow-glass-deep backdrop-blur-xl flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+        </div>
+        <div class="flex-1 min-w-0">
+            <p class="font-display font-bold text-sm text-white">Redirection vers WhatsApp</p>
+            <p class="text-xs text-slate-300 mt-0.5">Votre brief de commande pré-rempli est prêt.</p>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- MOTEUR JAVASCRIPT : PARTICULES, TYPEWRITER, 3D & WHATSAPP -->
+    <!-- ========================================================= -->
+    <script>
+        // Numéro WhatsApp officiel CRÉATIVE AD
+        const WHATSAPP_NUMBER = "237689851408";
+
+        // ============================================================
+        // 1. TYPEWRITER AU SCROLL & COMPTEURS ANIMÉS
+        // ============================================================
+        function runTypewriter(el) {
+            if (el.dataset.typed === "true") return;
+            el.dataset.typed = "true";
+
+            const fullText = el.dataset.text || "";
+            const speed = parseInt(el.dataset.speed, 10) || 30;
+
+            const textSpan = document.createElement('span');
+            const cursorSpan = document.createElement('span');
+            cursorSpan.className = 'type-cursor';
+            cursorSpan.setAttribute('aria-hidden', 'true');
+
+            el.textContent = "";
+            el.appendChild(textSpan);
+            el.appendChild(cursorSpan);
+
+            let idx = 0;
+            function step() {
+                if (idx < fullText.length) {
+                    textSpan.textContent += fullText.charAt(idx);
+                    idx++;
+                    setTimeout(step, speed);
+                } else {
+                    cursorSpan.classList.add('cursor-done');
+                }
+            }
+            step();
+        }
+
+        function animateCounter(el) {
+            if (el.dataset.counted === "true") return;
+            el.dataset.counted = "true";
+
+            const target = parseInt(el.dataset.target, 10) || 0;
+            const prefix = el.dataset.prefix || "";
+            const suffix = el.dataset.suffix || "";
+            const duration = 1450;
+            const startTime = performance.now();
+
+            if (target === 0) {
+                el.textContent = `${prefix}0${suffix}`;
+                return;
+            }
+
+            function update(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                const current = Math.round(eased * target);
+                el.textContent = `${prefix}${current}${suffix}`;
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            requestAnimationFrame(update);
+        }
+
+        function initScrollObservers() {
+            // Typewriter immédiat sur le titre Hero
+            document.querySelectorAll('.typewriter-target[data-immediate="true"]').forEach(el => {
+                setTimeout(() => runTypewriter(el), 160);
+            });
+
+            // Typewriter déclenché au scroll sur les titres de sections
+            const typeObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        runTypewriter(entry.target);
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2, rootMargin: '0px 0px -30px 0px' });
+
+            document.querySelectorAll('.typewriter-target:not([data-immediate="true"])').forEach(el => {
+                typeObserver.observe(el);
+            });
+
+            // Révélation cinétique des cartes
+            const revealObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -25px 0px' });
+
+            document.querySelectorAll('.reveal-kinetic').forEach(el => revealObserver.observe(el));
+
+            // Compteurs animés au scroll
+            const counterObserver = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            document.querySelectorAll('.stat-counter').forEach(el => counterObserver.observe(el));
+        }
+
+        // ============================================================
+        // 2. HALO CURSEUR + EFFET D'INCLINAISON 3D (DESKTOP)
+        // ============================================================
+        function initPointerEffects() {
+            const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+            if (!isFinePointer) return;
+
+            const spotlight = document.getElementById('cursor-spotlight');
+            let targetX = window.innerWidth / 2;
+            let targetY = window.innerHeight / 2;
+            let currentX = targetX;
+            let currentY = targetY;
+
+            window.addEventListener('mousemove', (e) => {
+                targetX = e.clientX;
+                targetY = e.clientY;
+                spotlight.style.opacity = '1';
+            }, { passive: true });
+
+            document.addEventListener('mouseleave', () => {
+                spotlight.style.opacity = '0';
+            });
+
+            function animateSpotlight() {
+                currentX += (targetX - currentX) * 0.12;
+                currentY += (targetY - currentY) * 0.12;
+                spotlight.style.left = `${currentX}px`;
+                spotlight.style.top = `${currentY}px`;
+                requestAnimationFrame(animateSpotlight);
+            }
+            animateSpotlight();
+
+            // Inclinaison 3D & spotlight sur les cartes
+            document.querySelectorAll('.glass-card, .tilt-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+
+                    if (card.classList.contains('tilt-card')) {
+                        const rotateY = ((x / rect.width) - 0.5) * 10;
+                        const rotateX = ((y / rect.height) - 0.5) * -10;
+                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.015, 1.015, 1.015)`;
+                    }
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    if (card.classList.contains('tilt-card')) {
+                        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                    }
+                });
+            });
+
+            // Inclinaison 3D douce sur les smartphones 9:16 (n'entrave jamais l'iframe)
+            document.querySelectorAll('.tilt-frame').forEach(frame => {
+                frame.addEventListener('mousemove', (e) => {
+                    const rect = frame.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const rotateY = ((x / rect.width) - 0.5) * 6;
+                    const rotateX = ((y / rect.height) - 0.5) * -6;
+                    frame.style.transform = `perspective(1100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+
+                frame.addEventListener('mouseleave', () => {
+                    frame.style.transform = 'perspective(1100px) rotateX(0deg) rotateY(0deg)';
+                });
+            });
+        }
+
+        // ============================================================
+        // 3. CANVAS INTERACTIF : RÉSEAU DE PARTICULES NEURALES
+        // ============================================================
+        function initNeuralCanvas() {
+            const canvas = document.getElementById('neural-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            let width = 0;
+            let height = 0;
+            let particles = [];
+            const mouse = { x: null, y: null, radius: 150 };
+            let waveTime = 0;
+
+            function resizeCanvas() {
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width * dpr;
+                canvas.height = height * dpr;
+                canvas.style.width = `${width}px`;
+                canvas.style.height = `${height}px`;
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+                // Densité adaptée pour une fluidité optimale sur mobile et desktop
+                const count = width < 640 ? 30 : (width < 1024 ? 52 : 76);
+                particles = [];
+                for (let i = 0; i < count; i++) {
+                    const rand = Math.random();
+                    let rgb = '0, 212, 255'; // Bleu électrique
+                    if (rand > 0.55 && rand <= 0.88) rgb = '139, 92, 246'; // Violet néon
+                    else if (rand > 0.88) rgb = '250, 204, 21'; // Or néon
+
+                    particles.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        vx: (Math.random() - 0.5) * 0.45,
+                        vy: (Math.random() - 0.5) * 0.45,
+                        size: Math.random() * 1.9 + 0.85,
+                        color: rgb
+                    });
+                }
+            }
+
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            }, { passive: true });
+
+            window.addEventListener('mouseout', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                waveTime += 0.007;
+
+                // Ondes lumineuses subtiles en arrière-plan
+                for (let w = 0; w < 2; w++) {
+                    ctx.beginPath();
+                    const baseY = height * (0.32 + w * 0.36);
+                    for (let x = 0; x <= width; x += 28) {
+                        const y = baseY + Math.sin(x * 0.003 + waveTime * (1.2 + w * 0.45)) * 34;
+                        if (x === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    }
+                    ctx.strokeStyle = w === 0 ? 'rgba(0, 212, 255, 0.05)' : 'rgba(168, 85, 247, 0.05)';
+                    ctx.lineWidth = 1.4;
+                    ctx.stroke();
+                }
+
+                const maxDist = width < 640 ? 96 : 134;
+
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0 || p.x > width) p.vx *= -1;
+                    if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                    // Interaction douce avec le curseur
+                    if (mouse.x !== null && mouse.y !== null) {
+                        const dx = mouse.x - p.x;
+                        const dy = mouse.y - p.y;
+                        const dist = Math.hypot(dx, dy);
+                        if (dist < mouse.radius && dist > 0) {
+                            const force = (mouse.radius - dist) / mouse.radius;
+                            p.x -= (dx / dist) * force * 1.5;
+                            p.y -= (dy / dist) * force * 1.5;
+                        }
+                    }
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${p.color}, 0.8)`;
+                    ctx.fill();
+
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const q = particles[j];
+                        const dist = Math.hypot(p.x - q.x, p.y - q.y);
+                        if (dist < maxDist) {
+                            const alpha = (1 - dist / maxDist) * 0.22;
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(q.x, q.y);
+                            ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
+                            ctx.lineWidth = 0.85;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                requestAnimationFrame(draw);
+            }
+
+            draw();
+        }
+
+        // ============================================================
+        // 4. BARRE DE PROGRESSION & MENU MOBILE
+        // ============================================================
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            const bar = document.getElementById('scroll-progress');
+            if (bar) bar.style.width = `${percent}%`;
+        }, { passive: true });
+
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const iconHam = document.getElementById('icon-hamburger');
+        const iconClose = document.getElementById('icon-close');
+        let menuOpen = false;
+
+        function toggleMobileMenu(forceState) {
+            menuOpen = typeof forceState === 'boolean' ? forceState : !menuOpen;
+            mobileBtn.setAttribute('aria-expanded', String(menuOpen));
+            iconHam.classList.toggle('hidden', menuOpen);
+            iconClose.classList.toggle('hidden', !menuOpen);
+            if (menuOpen) {
+                mobileDrawer.style.maxHeight = '380px';
+                mobileDrawer.style.opacity = '1';
+            } else {
+                mobileDrawer.style.maxHeight = '0px';
+                mobileDrawer.style.opacity = '0';
+            }
+        }
+
+        mobileBtn.addEventListener('click', () => toggleMobileMenu());
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => toggleMobileMenu(false));
+        });
+
+        // Pré-sélection de l'offre + défilement doux vers le formulaire
+        function selectOfferAndScroll(offerValue, optionalDuration) {
+            const select = document.getElementById('offer-select');
+            if (select) {
+                select.value = offerValue;
+                select.classList.add('ring-2', 'ring-gold-400');
+                setTimeout(() => select.classList.remove('ring-2', 'ring-gold-400'), 1600);
+            }
+
+            if (optionalDuration) {
+                const targetRadio = document.querySelector(`input[name="duration"][value="${optionalDuration}"]`);
+                if (targetRadio) targetRadio.checked = true;
+            }
+
+            const formSection = document.getElementById('commander');
+            if (formSection) {
+                formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // ============================================================
+        // 5. FORMULAIRE DE COMMANDE -> WHATSAPP (237689851408)
+        // ============================================================
+        let toastTimer = null;
+        function showToast() {
+            const toast = document.getElementById('toast-notification');
+            if (!toast) return;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 4500);
+        }
+
+        document.getElementById('whatsapp-order-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            try {
+                const clientName = document.getElementById('client-name').value.trim();
+                const brandName = document.getElementById('brand-name').value.trim();
+                const shopLink = document.getElementById('shop-link').value.trim();
+                const offer = document.getElementById('offer-select').value;
+                const durationRadio = document.querySelector('input[name="duration"]:checked');
+                const duration = durationRadio ? durationRadio.value : 'Pack de 5 vidéos';
+                const details = document.getElementById('product-details').value.trim();
+
+                const errorBox = document.getElementById('form-error');
+                const errorMsg = document.getElementById('form-error-msg');
+                const fallbackBox = document.getElementById('order-fallback-box');
+                const fallbackLink = document.getElementById('order-fallback-link');
+
+                if (!clientName) {
+                    errorMsg.textContent = "Merci de renseigner votre nom et prénom pour continuer.";
+                    errorBox.classList.remove('hidden');
+                    fallbackBox.classList.add('hidden');
+                    document.getElementById('client-name').focus();
+                    return;
+                }
+
+                if (!brandName) {
+                    errorMsg.textContent = "Merci de renseigner le nom de votre marque.";
+                    errorBox.classList.remove('hidden');
+                    fallbackBox.classList.add('hidden');
+                    document.getElementById('brand-name').focus();
+                    return;
+                }
+
+                errorBox.classList.add('hidden');
+
+                // Construction du message WhatsApp structuré
+                const lines = [
+                    "🚀 *NOUVELLE COMMANDE — CRÉATIVE AD*",
+                    "Bonjour, je souhaite obtenir un devis personnalisé pour ma publicité vidéo IA :",
+                    "",
+                    `👤 *Nom / Prénom :* ${clientName}`,
+                    `🏷️ *Marque :* ${brandName}`,
+                    `🔗 *Site / Boutique :* ${shopLink ? shopLink : "À partager sur WhatsApp"}`,
+                    `🎬 *Offre souhaitée :* ${offer} (Sur devis)`,
+                    `⏱️ *Durée souhaitée :* ${duration}`,
+                    `📝 *Détails sur le produit :* ${details ? details : "À définir ensemble"}`
+                ];
+
+                const encodedMessage = encodeURIComponent(lines.join("\n"));
+                const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+
+                fallbackLink.href = whatsappUrl;
+                fallbackBox.classList.remove('hidden');
+                showToast();
+
+                window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+            } catch (error) {
+                console.error("Erreur lors de la préparation WhatsApp :", error);
+            }
+        });
+
+        // ============================================================
+        // 6. INITIALISATION AU CHARGEMENT COMPLET
+        // ============================================================
+        window.onload = function () {
+            initScrollObservers();
+            initPointerEffects();
+            initNeuralCanvas();
+        };
+    </script>
+</body>
+</html>
